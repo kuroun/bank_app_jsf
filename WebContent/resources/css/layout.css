@@ -1,0 +1,11 @@
+#body {
+	margin: 30px;
+}
+
+#total_balance{
+	text-align: right;
+}
+.error_message {
+	color: red;
+	margin-top: 5px;
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+   xmlns:h = "http://java.sun.com/jsf/html"
+   xmlns:ui = "http://java.sun.com/jsf/facelets">
+   <h:body> 
+      <ui:composition template = "${pageContext.request.contextPath}/layout/layout.xhtml">         
+         <ui:define name = "content">
+         	<ui:param name="account" value="#{accountService.searchAccount(account.accountnumber)}" />
+         	<div class="panel-heading">
+	    		Account Number: <h:outputText value="#{account.getAccountnumber()}"></h:outputText>
+	    		<span style="float:right;">
+	    			Customer: <h:outputText value="#{account.getCustomer().getFullName().toString()}"></h:outputText>
+	    		</span>
+	    	</div>
+			<div class="panel-body">
+			    <h4 align="center" style="text-decoration:underline;">Transaction Records:</h4>
+			    <div class="table-responsive">
+				  <table class="table">
+				  	<tr>
+				  		<th>Date</th>
+				    	<th>Amount</th>
+				    	<th>Description</th>
+				    	<th>From</th>
+				    	<th>To</th>
+				  	</tr>
+				  	<ui:repeat value="#{account.getEntryList()}" var="entry">
+			            <tr>
+			            	<td><h:outputText value="#{entry.date}"></h:outputText></td>
+			            	<td><h:outputText value="#{entry.amount}"></h:outputText></td>
+			            	<td><h:outputText value="#{entry.description}"></h:outputText></td>
+			            	<td><h:outputText value="#{entry.fromAccountNumber}"></h:outputText></td>
+			            	<td><h:outputText value="#{entry.fromPersonName}"></h:outputText></td>
+			            </tr>
+			        </ui:repeat>  
+				  </table>
+				</div>
+			</div>
+			<div class="panel-footer"><div id ="total_balance">Total Balance: <span class="badge"><h:outputText value="#{account.getBalance()}"></h:outputText></span></div></div>
+			
+         </ui:define> 		
+      </ui:composition> 
+   
+   </h:body> 
+</html>	

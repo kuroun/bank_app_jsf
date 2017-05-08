@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+   xmlns:h = "http://java.sun.com/jsf/html"
+   xmlns:ui = "http://java.sun.com/jsf/facelets">
+   
+   <h:body> 
+      <ui:composition template = "${pageContext.request.contextPath}/layout/layout.xhtml">         
+         <ui:define name = "content">
+         	<div class="panel-heading">
+	    		Account List
+	    	</div>
+			<div class="panel-body">
+			    <div class="table-responsive">
+				  <table class="table">
+				  	<tr>
+				  		<th>Account Number</th>
+				    	<th>Customer Name</th>
+				  	</tr>
+				  	<ui:repeat value="#{accountService.getAllAccounts()}" var="account">
+			            <tr>
+			            	<td><h:form><h:commandLink value = "#{account.accountnumber}" action="#{accountService.getAccount(account.accountnumber)}" /></h:form></td>
+			            	<td><h:outputText value="#{account.customer.fullName}"></h:outputText></td>
+			            </tr>
+			        </ui:repeat>  
+				    
+				  </table>
+				</div>
+			</div>
+         </ui:define> 		
+      </ui:composition> 
+   
+   </h:body> 
+</html>	

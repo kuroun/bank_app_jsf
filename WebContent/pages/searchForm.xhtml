@@ -1,0 +1,35 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns = "http://www.w3.org/1999/xhtml"   
+   xmlns:h = "http://java.sun.com/jsf/html"
+   xmlns:ui = "http://java.sun.com/jsf/facelets">
+   
+   <h:body> 
+      <ui:composition template = "${pageContext.request.contextPath}/layout/layout.xhtml">         
+         <ui:define name = "content">
+            <div class="panel-heading">Search Account</div>
+			  <div class="panel-body">
+			    <form class="form-horizontal">
+				  <h:form class="form-horizontal">
+	         		<div class="form-group">
+					    <label for="inputAccountNumber" class="col-sm-3 control-label">Account Number</label>
+					    <div class="col-sm-9">
+					      <h:inputText class="form-control" id="inputAccountNumber" name="accountNumber"  value="#{account.accountnumber}"></h:inputText>
+					    </div>
+					  </div>
+					   <div class="form-group">
+					    <div class="col-sm-offset-3 col-sm-9">
+					      <h:commandButton class="btn btn-default" value="submit" action="#{accountService.getAccount(account.accountnumber)}">
+					      </h:commandButton>
+					    </div>
+					  </div>
+	         		</h:form>
+				</form>
+			  </div>
+         </ui:define> 		
+      </ui:composition> 
+   
+   </h:body> 
+</html>	
